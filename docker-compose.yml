@@ -1,0 +1,6 @@
+services:
+  comparar-db-docker:
+    image: sinfallas/comparar-db-docker:latest
+    container_name: comparardb
+    restart: always
+    pull_policy: always
