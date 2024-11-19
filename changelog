@@ -1,4 +1,16 @@
-commit f8a5368333e194949d8e38d8493102f9ff3241ca (HEAD -> main, origin/main)
+commit 83bde4d644783b0191116f10829266c5bb297b32 (HEAD -> main, origin/main)
+Author: Jesus Palencia <sinfallas@gmail.com>
+Date:   Tue Nov 19 18:09:38 2024 -0400
+
+    * se agrega codigo a copiardb
+
+commit 7bcca0975a6253f5bccf77c3aeb28c2d49121816
+Author: Jesus Palencia <sinfallas@gmail.com>
+Date:   Tue Nov 19 17:47:02 2024 -0400
+
+    * changelog
+
+commit f8a5368333e194949d8e38d8493102f9ff3241ca
 Author: Jesus Palencia <sinfallas@gmail.com>
 Date:   Tue Nov 19 17:46:52 2024 -0400
 
