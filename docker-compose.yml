@@ -14,3 +14,9 @@ services:
       - PASS1=123456
       - USER2=admin
       - PASS2=123456
+      - MAILUSER=
+      - MAILPASS=
+      - MAILSERVER=
+      - MAILPORT
+      - MAILFROM=
+      - MAILTO=
