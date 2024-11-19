@@ -4,3 +4,13 @@ services:
     container_name: comparardb
     restart: always
     pull_policy: always
+    environment:
+      - IP1=192.168.1.1
+      - PORT1=5432
+      - IP2=192.168.1.2
+      - PORT2=5432
+      - DBNAME=prueba
+      - USER1=admin
+      - PASS1=123456
+      - USER2=admin
+      - PASS2=123456
