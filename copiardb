@@ -14,7 +14,7 @@ function clean_1() {
 }
 
 function ayuda() {
-	echo "Ejemplo: $nom IP1 PORT1 IP2 PORT2 NOMBREDB USER1 PASSWORD1 USER2 PASSWORD2"
+	echo "Ejemplo: $nom IP1 PORT1 IP2 PORT2 DBNAME USER1 PASSWORD1 USER2 PASSWORD2"
 	exit 1
 }
 
