@@ -14,9 +14,9 @@ variables de entorno:
 * PASS1=123456
 * USER2=admin
 * PASS2=123456
-* MAILUSER=
-* MAILPASS=
-* MAILSERVER=
-* MAILPORT=
-* MAILFROM=
-* MAILTO=
+* MAILUSER=admin@mail.com
+* MAILPASS=123456
+* MAILSERVER=smtp.mail.com
+* MAILPORT=456
+* MAILFROM=admin@mail.com
+* MAILTO=client@mail.com
