@@ -20,3 +20,6 @@ variables de entorno:
 * MAILPORT=456
 * MAILFROM=admin@mail.com
 * MAILTO=client@mail.com
+
+Get this image on:
+* https://hub.docker.com/repository/docker/sinfallas/comparar-db-docker
