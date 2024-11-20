@@ -17,6 +17,6 @@ services:
       - MAILUSER=
       - MAILPASS=
       - MAILSERVER=
-      - MAILPORT
+      - MAILPORT=
       - MAILFROM=
       - MAILTO=
