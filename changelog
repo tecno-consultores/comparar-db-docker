@@ -1,4 +1,76 @@
-commit c27174506914316aff71f55ad594786b6b3756e6 (HEAD -> main, origin/main)
+commit 1e27cb4434f899d9ade88236fce1887314cecf39 (HEAD -> main, origin/main)
+Author: Jesus Palencia <sinfallas@gmail.com>
+Date:   Sat Nov 23 23:20:09 2024 -0400
+
+    * update
+
+commit 7019347cd2d42d74109afdc5fbb2b4b00b054e5b (tag: v1.0)
+Author: Jesús Palencia <sinfallas@gmail.com>
+Date:   Wed Nov 20 11:01:31 2024 -0400
+
+    Update README.md
+
+commit 71e65b2fcbb22fdf2379a7d322db734c75b240a4
+Author: Jesús Palencia <sinfallas@gmail.com>
+Date:   Wed Nov 20 11:01:12 2024 -0400
+
+    Update README.md
+
+commit 43a295ee1202571bdbe9270489fb3289f9066984
+Author: Jesús Palencia <sinfallas@gmail.com>
+Date:   Wed Nov 20 10:58:06 2024 -0400
+
+    Update README.md
+
+commit c8bea7233c8646128fff3849239eabd599aaef30
+Author: Jesús Palencia <sinfallas@gmail.com>
+Date:   Wed Nov 20 10:55:50 2024 -0400
+
+    Update README.md
+
+commit 0c30ce2dd353db068b7c94ad277ce25750982aa1
+Author: Jesús Palencia <sinfallas@gmail.com>
+Date:   Wed Nov 20 10:47:26 2024 -0400
+
+    Update README.md
+
+commit 3b18e174073c1844c09f1c47ef10cfbfcbb706bf
+Author: Jesús Palencia <sinfallas@gmail.com>
+Date:   Wed Nov 20 10:41:58 2024 -0400
+
+    Update README.md
+
+commit 809267883fbe81982c688989ff72632d77ddf7b3
+Author: Jesús Palencia <sinfallas@gmail.com>
+Date:   Wed Nov 20 10:41:12 2024 -0400
+
+    Update docker-compose.yml
+
+commit 9d8e799fb2ca052a6274c6cea3e908431e2c70cb
+Author: Jesús Palencia <sinfallas@gmail.com>
+Date:   Wed Nov 20 10:37:37 2024 -0400
+
+    Update README.md
+
+commit a383e9f63ec86c14f7823c6a7196a86677f202de
+Author: Jesús Palencia <sinfallas@gmail.com>
+Date:   Wed Nov 20 09:55:29 2024 -0400
+
+    Update docker-compose.yml
+
+commit fbf1a0ea2c00bc991ab1441b1380521ec53509c5
+Author: Jesús Palencia <sinfallas@gmail.com>
+Date:   Wed Nov 20 09:55:19 2024 -0400
+
+    Update README.md
+
+commit 33eb31ec33c6edce247ee0bcc5f1551251b77cba
+Author: Jesus Palencia <sinfallas@gmail.com>
+Date:   Tue Nov 19 18:12:54 2024 -0400
+
+    * changelog
+
+commit c27174506914316aff71f55ad594786b6b3756e6
 Author: Jesus Palencia <sinfallas@gmail.com>
 Date:   Tue Nov 19 18:12:46 2024 -0400
 
