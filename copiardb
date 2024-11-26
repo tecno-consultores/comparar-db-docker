@@ -78,7 +78,7 @@ fi
 rm -f /app/*.dump
 clear
 echo "backup"
-PGPASSWORD=$PASS1 pg_dump -Fc -h $IP1 -p $PORT1 -U $USER1 -d $DBNAME > /app/$DBNAME.dump
+PGPASSWORD=$PASS1 pg_dump --quote-all-identifiers -Fc -h $IP1 -p $PORT1 -U $USER1 -d $DBNAME > /app/$DBNAME.dump
 echo "restore"
 PGPASSWORD=$PASS2 pg_restore --single-transaction -h $IP2 -p $PORT2 -U $USER2 -d $DBNAME /app/$DBNAME.dump
 
