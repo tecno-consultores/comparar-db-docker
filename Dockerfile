@@ -1,6 +1,6 @@
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 LABEL maintainer="sinfallas@gmail.com"
-LABEL build_date="2024-11-26"
+LABEL build_date="2024-12-03"
 WORKDIR /app
 RUN apt update -qq && apt-get -y dist-upgrade && apt -y install --no-install-recommends --no-install-suggests nginx libnginx-mod-stream swaks ca-certificates nano wget curl && rm -rf /var/lib/{apt,dpkg,cache,log} && apt clean && apt -y autoremove
 RUN install -d /usr/share/postgresql-common/pgdg
