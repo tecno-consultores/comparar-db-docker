@@ -1,4 +1,40 @@
-commit 1e27cb4434f899d9ade88236fce1887314cecf39 (HEAD -> main, origin/main)
+commit e61047986c67cf1a001e82fcdc63590f46a7ca37 (HEAD -> main, origin/main)
+Author: Jesus Palencia <sinfallas@gmail.com>
+Date:   Sat Dec 7 11:06:41 2024 -0400
+
+    * bugfix
+
+commit e8687adc41ff2d5a9fd49e1217332e1195a2a7ce
+Author: Jesús Palencia <sinfallas@gmail.com>
+Date:   Tue Dec 3 14:24:27 2024 -0400
+
+    Update Dockerfile
+
+commit fba6cf153a1415a1ad9a03980ed3ce684870abad
+Author: Jesús Palencia <sinfallas@gmail.com>
+Date:   Tue Nov 26 12:37:14 2024 -0400
+
+    Update copiardb
+
+commit 09da536e4efe3a720d9a5308b0b6b0006ad9c3fb
+Author: Jesús Palencia <sinfallas@gmail.com>
+Date:   Tue Nov 26 12:22:29 2024 -0400
+
+    Update copiardb
+
+commit 2c7703a591cb9f8270010956fb4428e884e655e4
+Author: Jesús Palencia <sinfallas@gmail.com>
+Date:   Tue Nov 26 10:26:45 2024 -0400
+
+    Update Dockerfile
+
+commit 03d9dbd3af180da586c96296439d511459e05b63
+Author: Jesus Palencia <sinfallas@gmail.com>
+Date:   Sat Nov 23 23:20:17 2024 -0400
+
+    * changelog
+
+commit 1e27cb4434f899d9ade88236fce1887314cecf39
 Author: Jesus Palencia <sinfallas@gmail.com>
 Date:   Sat Nov 23 23:20:09 2024 -0400
 
