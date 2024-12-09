@@ -88,6 +88,8 @@ if [[ "$contarori" == "$contardes" ]]; then
     	echo "La cantidad de TABLAS en las db COINCIDE." >> $archi
     	echo Cantidad de tablas en origen: $contarori
     	echo Cantidad de tablas en origen: $contarori >> $archi
+    	echo Cantidad de tablas en origen: $contardes
+    	echo Cantidad de tablas en origen: $contardes >> $archi
 else
     	echo -e "\e[00;31mERROR: La cantidad de TABLAS en las db son diferentes.\e[00m"
     	echo "ERROR: La cantidad de TABLAS en las db son diferentes." >> $archi
@@ -109,7 +111,7 @@ for i in ${listaori[@]}; do
 	echo $dbori >> $archi
 	echo $dbdes
 	echo $dbdes >> $archi
-	if [[ "$contarori" == "$contardes" ]]; then
+	if [[ "$dbori" == "$dbdes" ]]; then
     		echo -e "\e[00;1;92mLos datos COINCIDEN.\e[00m"
     		echo "Los datos COINCIDEN." >> $archi
 	else
