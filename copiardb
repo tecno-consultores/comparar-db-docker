@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+# Made by Sinfallas <sinfallas@yahoo.com>
+# Licence: GPL-2
+LC_ALL=C
+SECONDS=0
+IFS=" "
+LOCKFILE="/tmp/$(basename $0)_$(whoami)"
+LOCKFD="150"
+nom=$(basename "$0")
+
+function clean_1() {
+	rm -f /run/$(basename $0).pid
+        rm -f "$LOCKFILE"
+}
+
+function ayuda() {
+	echo "Ejemplo: $nom IP1 PORT1 IP2 PORT2 DBNAME USER1 PASSWORD1 USER2 PASSWORD2"
+	exit 1
+}
+
+function lock() {
+        echo {LOCKFD}>$LOCKFILE
+        flock -n $LOCKFD
+}
+
+function exit_error() {
+        echo "ERROR: Ya hay una instancia en ejecución. Saliendo"
+        exit 1
+}
+
+echo "$BASHPID" > /run/$(basename $0).pid
+trap "clean_1; exit" 0 1 2 3 15
+lock || exit_error
+
+if [[ -z "$IP1" ]]; then
+	ayuda
+fi
+
+if [[ -z "$PORT1" ]]; then
+	ayuda
+fi
+
+if [[ -z "$IP2" ]]; then
+	ayuda
+fi
+
+if [[ -z "$PORT2" ]]; then
+	ayuda
+fi
+
+if [[ -z "$DBNAME" ]]; then
+	ayuda
+fi
+
+if [[ -z "$USER1" ]]; then
+	ayuda
+fi
+
+if [[ -z "$PASS1" ]]; then
+	ayuda
+fi
+
+if [[ -z "$USER2" ]]; then
+	ayuda
+fi
+
+if [[ -z "$PASS2" ]]; then
+	ayuda
+fi
+
+rm -f /app/*.dump
+clear
+echo "backup"
+PGPASSWORD=$PASS1 pg_dump --quote-all-identifiers -Fc -h $IP1 -p $PORT1 -U $USER1 -d $DBNAME > /app/$DBNAME.dump
+echo "restore"
+PGPASSWORD=$PASS2 pg_restore --single-transaction -h $IP2 -p $PORT2 -U $USER2 -d $DBNAME /app/$DBNAME.dump
+
+echo "duracion $SECONDS segundos"
+echo "Finalizado."

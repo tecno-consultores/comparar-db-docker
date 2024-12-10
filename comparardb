@@ -1,0 +1,125 @@
+#!/usr/bin/env bash
+# Made by Sinfallas <sinfallas@yahoo.com>
+# Licence: GPL-2
+LC_ALL=C
+SECONDS=0
+IFS=" "
+LOCKFILE="/tmp/$(basename $0)_$(whoami)"
+LOCKFD="150"
+nom=$(basename "$0")
+archi="/app/resultado.txt"
+
+function clean_1() {
+	rm -f /run/$(basename $0).pid
+        rm -f "$LOCKFILE"
+	rm -f $archi
+}
+
+function ayuda() {
+	echo "Ejemplo: $nom IP1 PORT1 IP2 PORT2 DBNAME USER1 PASS1 USER2 PASS2"
+	exit 1
+}
+
+function lock() {
+        echo {LOCKFD}>$LOCKFILE
+        flock -n $LOCKFD
+}
+
+function exit_error() {
+        echo "ERROR: Ya hay una instancia en ejecución. Saliendo"
+        exit 1
+}
+
+echo "$BASHPID" > /run/$(basename $0).pid
+trap "clean_1; exit" 0 1 2 3 15
+lock || exit_error
+
+if [[ -z "$IP1" ]]; then
+	ayuda
+fi
+
+if [[ -z "$PORT1" ]]; then
+	ayuda
+fi
+
+if [[ -z "$IP2" ]]; then
+	ayuda
+fi
+
+if [[ -z "$PORT2" ]]; then
+	ayuda
+fi
+
+if [[ -z "$DBNAME" ]]; then
+	ayuda
+fi
+
+if [[ -z "$USER1" ]]; then
+	ayuda
+fi
+
+if [[ -z "$PASS1" ]]; then
+	ayuda
+fi
+
+if [[ -z "$USER2" ]]; then
+	ayuda
+fi
+
+if [[ -z "$PASS2" ]]; then
+	ayuda
+fi
+
+clear
+
+contarori=$(PGPASSWORD=$PASS1 psql -h $IP1 -p $PORT1 -U $USER1 -d $DBNAME -c "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = 'public' AND table_type = 'BASE TABLE'" | grep -v '(1 row)' | sed 1d | sed 1d | sed 2d)
+contardes=$(PGPASSWORD=$PASS2 psql -h $IP2 -p $PORT2 -U $USER2 -d $DBNAME -c "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = 'public' AND table_type = 'BASE TABLE'" | grep -v '(1 row)' | sed 1d | sed 1d | sed 2d)
+listaori=$(PGPASSWORD=$PASS1 psql -h $IP1 -p $PORT1 -U $USER1 -d $DBNAME -c "SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE';" | sed 1d | sed 1d)
+
+if [[ "$contarori" == "$contardes" ]]; then
+	echo -e "\e[00;1;92mLa cantidad de TABLAS en las db COINCIDE\e[00m"
+    	echo "La cantidad de TABLAS en las db COINCIDE." >> $archi
+    	echo Cantidad de tablas en origen: $contarori
+    	echo Cantidad de tablas en origen: $contarori >> $archi
+    	echo Cantidad de tablas en origen: $contardes
+    	echo Cantidad de tablas en origen: $contardes >> $archi
+else
+    	echo -e "\e[00;31mERROR: La cantidad de TABLAS en las db son diferentes.\e[00m"
+    	echo "ERROR: La cantidad de TABLAS en las db son diferentes." >> $archi
+    	echo Cantidad de tablas en origen: $contarori
+    	echo Cantidad de tablas en origen: $contarori >> $archi
+    	echo Cantidad de tablas en destino: $contardes
+    	echo Cantidad de tablas en destino: $contardes >> $archi
+fi
+
+echo "================================"
+echo "================================" >> $archi
+
+for i in ${listaori[@]}; do
+	dbori=$(PGPASSWORD=$PASS1 psql -h $IP1 -p $PORT1 -U $USER1 -d $DBNAME -c "select count(*) from $i" | grep -v '(1 row)' | sed 1d | sed 1d | sed 2d)
+	dbdes=$(PGPASSWORD=$PASS2 psql -h $IP2 -p $PORT2 -U $USER2 -d $DBNAME -c "select count(*) from $i" | grep -v '(1 row)' | sed 1d | sed 1d | sed 2d)
+	echo $i
+	echo $i >> $archi
+	echo $dbori
+	echo $dbori >> $archi
+	echo $dbdes
+	echo $dbdes >> $archi
+	if [[ "$dbori" == "$dbdes" ]]; then
+    		echo -e "\e[00;1;92mLos datos COINCIDEN.\e[00m"
+    		echo "Los datos COINCIDEN." >> $archi
+	else
+    		echo -e "\e[00;31mERROR: Los datos son diferentes.\e[00m"
+    		echo "ERROR: Los datos son diferentes." >> $archi
+	fi
+	echo "================================"
+	echo "================================" >> $archi
+done
+
+if [[ -z "$MAILSERVER" ]]; then
+	echo "No se enviara correo."
+else
+	swaks -4 --to $MAILTO --from $MAILFROM --server $MAILSERVER:$MAILPORT -tls --auth LOGIN --auth-user $MAILUSER --auth-password $MAILPASS --header "Subject: Reporte de comparacion %DATE%" --body "Se adjunta el archivo." --attach-type "text/plain" --attach-name "resultado.txt" --attach @/app/resultado.txt
+fi
+
+echo "duracion $SECONDS segundos"
+echo "Finalizado."

@@ -1,0 +1,22 @@
+services:
+  comparar-db-docker:
+    image: sinfallas/comparar-db-docker:latest
+    container_name: comparardb
+    restart: always
+    pull_policy: always
+    environment:
+      - IP1=128.66.0.1
+      - PORT1=5432
+      - IP2=128.66.0.2
+      - PORT2=5432
+      - DBNAME=dbexample
+      - USER1=admin
+      - PASS1=123456
+      - USER2=admin
+      - PASS2=123456
+      - MAILUSER=
+      - MAILPASS=
+      - MAILSERVER=
+      - MAILPORT=
+      - MAILFROM=
+      - MAILTO=

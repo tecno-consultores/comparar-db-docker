@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+# Made by Sinfallas <sinfallas@yahoo.com>
+# Licence: GPL-2
+LC_ALL=C
+SECONDS=0
+IFS=" "
+LOCKFILE="/tmp/$(basename $0)_$(whoami)"
+LOCKFD="150"
+nom=$(basename "$0")
+fecha=$(date +%d%m%Y)
+
+function clean_1() {
+	rm -f /run/$(basename $0).pid
+        rm -f "$LOCKFILE"
+        rm -f /app/*.tar.gz
+	rm -f /app/*.dump
+	rm -rf /app/$fecha
+}
+
+function lock() {
+        echo {LOCKFD}>$LOCKFILE
+        flock -n $LOCKFD
+}
+
+function exit_error() {
+        echo "ERROR: Ya hay una instancia en ejecución. Saliendo"
+        exit 1
+}
+
+echo "$BASHPID" > /run/$(basename $0).pid
+trap "clean_1; exit" 0 1 2 3 15
+lock || exit_error
+
+clear
+if ! [[ -f /app/lista.txt ]]; then
+	echo "ERROR: el archivo /app/lista.txt, favor consulte la documentacion."
+	exit 1
+fi
+
+mkdir -p /app/$fecha
+
+while read -r ip puerto usuario clave db; do
+	echo "$ip", "$puerto", "$usuario", "$clave", "$db"
+	PGPASSWORD="$clave" pg_dump -Fc -h $ip -p $puerto -U $usuario -d $db > /app/$fecha/$db.dump
+	echo "==================="
+done < ./lista.txt
+
+echo "duracion $SECONDS segundos"
+echo "Finalizado."
