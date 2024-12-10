@@ -1,6 +1,6 @@
 # comparar-db-docker
 
-Script para copiar y comparar el contenido de 2 bases de datos postgresql
+Script para copiar, comparar o  respaldar el contenido de bases de datos postgresql
 
 
 variables de entorno:
