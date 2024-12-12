@@ -1,4 +1,28 @@
-commit 3add8d789e9dd2c7aa232938257fa2e8b5e4a259 (HEAD -> main, origin/main)
+commit 6700fc6f6f674187038978f61cb45287e1ab41d3 (HEAD -> main, origin/main, origin/HEAD)
+Author: Jesus Palencia <ansistemas4@invertropoli.com>
+Date:   Thu Dec 12 10:48:35 2024 -0400
+
+    * nombre del archivo del dump
+
+commit f5e67c50ace5ad8780aacf1e89e943654ea2830e
+Author: Jesús Palencia <sinfallas@yahoo.com>
+Date:   Tue Dec 10 14:14:08 2024 -0400
+
+    Update README.md
+
+commit 43e7c17f0077ae782058eb32d195872bbf924d24
+Author: Jesús Palencia <sinfallas@yahoo.com>
+Date:   Tue Dec 10 14:08:30 2024 -0400
+
+    Update README.md
+
+commit bca83d62b6fab94ba307ff12f9168b38c2dd189b (tag: v1.0)
+Author: Jesus Palencia <ansistemas4@invertropoli.com>
+Date:   Tue Dec 10 13:47:33 2024 -0400
+
+    * changelog
+
+commit 3add8d789e9dd2c7aa232938257fa2e8b5e4a259
 Author: Jesus Palencia <ansistemas4@invertropoli.com>
 Date:   Tue Dec 10 13:47:25 2024 -0400
 
