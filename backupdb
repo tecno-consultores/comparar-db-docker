@@ -41,7 +41,7 @@ mkdir -p /app/$fecha
 
 while read -r ip puerto usuario clave db; do
 	echo "$ip", "$puerto", "$usuario", "$clave", "$db"
-	PGPASSWORD="$clave" pg_dump -Fc -h $ip -p $puerto -U $usuario -d $db > /app/$fecha/$db.dump
+	PGPASSWORD="$clave" pg_dump -Fc -h $ip -p $puerto -U $usuario -d $db > /app/$fecha/$db-$ip-$puerto.dump
 	echo "==================="
 done < ./lista.txt
 
