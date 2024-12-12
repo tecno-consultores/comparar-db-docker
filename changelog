@@ -1,4 +1,22 @@
-commit a83bfc91ece8ed4885ee5c8a4841aebd3324be19 (HEAD -> main, origin/main, origin/HEAD)
+commit 45d1ac9b4ae113e58108fe654af74e92d0315ed0 (HEAD -> main, origin/main, origin/HEAD)
+Author: Jesus Palencia <ansistemas4@invertropoli.com>
+Date:   Thu Dec 12 11:38:23 2024 -0400
+
+    * se cambia el orden de las capas
+
+commit ed15d10959103b80628ea3709aac3dfa376d4bd8
+Author: Jesús Palencia <sinfallas@yahoo.com>
+Date:   Thu Dec 12 11:30:53 2024 -0400
+
+    Update README.md
+
+commit fd746db0b03cd10766606fa99d078ef7753f3997 (tag: v1.2)
+Author: Jesus Palencia <ansistemas4@invertropoli.com>
+Date:   Thu Dec 12 11:23:33 2024 -0400
+
+    * changelog
+
+commit a83bfc91ece8ed4885ee5c8a4841aebd3324be19
 Author: Jesus Palencia <ansistemas4@invertropoli.com>
 Date:   Thu Dec 12 11:23:22 2024 -0400
 
