@@ -12,9 +12,6 @@ fecha=$(date +%d%m%Y)
 function clean_1() {
 	rm -f /run/$(basename $0).pid
         rm -f "$LOCKFILE"
-        rm -f /app/*.tar.gz
-	rm -f /app/*.dump
-	rm -rf /app/$fecha
 }
 
 function lock() {
