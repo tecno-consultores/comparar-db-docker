@@ -1,4 +1,16 @@
-commit 6700fc6f6f674187038978f61cb45287e1ab41d3 (HEAD -> main, origin/main, origin/HEAD)
+commit a83bfc91ece8ed4885ee5c8a4841aebd3324be19 (HEAD -> main, origin/main, origin/HEAD)
+Author: Jesus Palencia <ansistemas4@invertropoli.com>
+Date:   Thu Dec 12 11:23:22 2024 -0400
+
+    * backupdb bugfix
+
+commit 12dd57c5c1b62220369063046fd3fb5ed69e3f30 (tag: v1.1)
+Author: Jesus Palencia <ansistemas4@invertropoli.com>
+Date:   Thu Dec 12 10:48:55 2024 -0400
+
+    * changelog
+
+commit 6700fc6f6f674187038978f61cb45287e1ab41d3
 Author: Jesus Palencia <ansistemas4@invertropoli.com>
 Date:   Thu Dec 12 10:48:35 2024 -0400
 
