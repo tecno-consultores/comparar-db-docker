@@ -6,7 +6,6 @@ RUN apt update -qq && apt-get -y dist-upgrade && apt -y install --no-install-rec
 RUN install -d /usr/share/postgresql-common/pgdg
 RUN curl -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc --fail https://www.postgresql.org/media/keys/ACCC4CF8.asc
 RUN echo "deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] https://apt.postgresql.org/pub/repos/apt jammy-pgdg main" > /etc/apt/sources.list.d/pgdg.list
-RUN apt update -qq && apt -y install --no-install-recommends --no-install-suggests postgresql-client-16 && apt clean && apt -y autoremove && rm -rf /var/lib/{apt,dpkg,cache,log}
 COPY COPYING ./
 COPY comparardb /usr/bin/comparardb
 COPY copiardb /usr/bin/copiardb
@@ -14,5 +13,6 @@ COPY backupdb /usr/bin/backupdb
 RUN chmod 777 /usr/bin/comparardb
 RUN chmod 777 /usr/bin/copiardb
 RUN chmod 777 /usr/bin/backupdb
+RUN apt update -qq && apt -y install --no-install-recommends --no-install-suggests postgresql-client-16 && apt clean && apt -y autoremove && rm -rf /var/lib/{apt,dpkg,cache,log}
 EXPOSE 80
 CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
