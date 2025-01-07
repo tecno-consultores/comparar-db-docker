@@ -71,9 +71,12 @@ fi
 rm -f /app/*.dump
 clear
 echo "backup"
+verori=$(PGPASSWORD=$PASS1 psql -h $IP1 -p $PORT1 -U $USER1 -d $DBNAME -c 'show server_version;' | grep -v '(1 row)' | grep -v 'server_version' | sed 1d | sed 2d | cut -c 1-6)
+echo "Version: $verori"
 PGPASSWORD=$PASS1 pg_dump --quote-all-identifiers -Fc -h $IP1 -p $PORT1 -U $USER1 -d $DBNAME > /app/$DBNAME.dump
 echo "restore"
+verdes=$(PGPASSWORD=$PASS2 psql -h $IP2 -p $PORT2 -U $USER2 -d $DBNAME -c 'show server_version;' | grep -v '(1 row)' | grep -v 'server_version' | sed 1d | sed 2d | cut -c 1-6)
+echo "Version: $verdes"
 PGPASSWORD=$PASS2 pg_restore --single-transaction -h $IP2 -p $PORT2 -U $USER2 -d $DBNAME /app/$DBNAME.dump
-
 echo "duracion $SECONDS segundos"
 echo "Finalizado."
