@@ -1,4 +1,22 @@
-commit 45d1ac9b4ae113e58108fe654af74e92d0315ed0 (HEAD -> main, origin/main, origin/HEAD)
+commit 85e466fa8d3ad3b3ef6e84463380c3df149a7a5a (HEAD -> main, origin/main, origin/HEAD)
+Author: Jesus Palencia <sinfallas@gmail.com>
+Date:   Mon Jan 6 20:33:48 2025 -0400
+
+    * muestra la version de postgres
+
+commit 46805fe2ce8cd3fddd27ad0cf5cbb0c0c5a5da52
+Author: Jesús Palencia <sinfallas@yahoo.com>
+Date:   Wed Dec 25 16:05:53 2024 -0400
+
+    Update README.md
+
+commit 13c8b0d70cffcd82a6a13ef61362f6696a856da0 (tag: v1.3)
+Author: Jesus Palencia <ansistemas4@invertropoli.com>
+Date:   Thu Dec 12 11:38:34 2024 -0400
+
+    * changelog
+
+commit 45d1ac9b4ae113e58108fe654af74e92d0315ed0
 Author: Jesus Palencia <ansistemas4@invertropoli.com>
 Date:   Thu Dec 12 11:38:23 2024 -0400
 
