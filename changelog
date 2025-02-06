@@ -1,4 +1,16 @@
-commit 85e466fa8d3ad3b3ef6e84463380c3df149a7a5a (HEAD -> main, origin/main, origin/HEAD)
+commit e695e32f6b71bede3668ea78b8946e371f76e5c1 (HEAD -> main, origin/main, origin/HEAD)
+Author: Jesus Palencia <sinfallas@gmail.com>
+Date:   Wed Feb 5 21:13:52 2025 -0400
+
+    * ping
+
+commit c856190a4f7a4a45fd12fc31aba905ce4321f15e (tag: v1.4)
+Author: Jesus Palencia <sinfallas@gmail.com>
+Date:   Mon Jan 6 20:34:03 2025 -0400
+
+    * changelog
+
+commit 85e466fa8d3ad3b3ef6e84463380c3df149a7a5a
 Author: Jesus Palencia <sinfallas@gmail.com>
 Date:   Mon Jan 6 20:33:48 2025 -0400
 
