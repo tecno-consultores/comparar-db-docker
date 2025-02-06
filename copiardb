@@ -70,6 +70,22 @@ fi
 
 rm -f /app/*.dump
 clear
+ping -A -c 5 $IP1 > /dev/null
+if [[ $? = 0 ]]; then
+	echo "$IP1 esta disponible."
+else
+	echo "ERROR: $IP1 no esta disponible."
+	exit 1
+fi
+
+ping -A -c 5 $IP2 > /dev/null
+if [[ $? = 0 ]]; then
+	echo "$IP2 esta disponible."
+else
+	echo "ERROR: $IP2 no esta disponible."
+	exit 1
+fi
+
 echo "backup"
 verori=$(PGPASSWORD=$PASS1 psql -h $IP1 -p $PORT1 -U $USER1 -d $DBNAME -c 'show server_version;' | grep -v '(1 row)' | grep -v 'server_version' | sed 1d | sed 2d | cut -c 1-6)
 echo "Version: $verori"

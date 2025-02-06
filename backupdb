@@ -37,11 +37,16 @@ fi
 mkdir -p /app/$fecha
 
 while read -r ip puerto usuario clave db; do
-	echo "$ip", "$puerto", "$usuario", "$clave", "$db"
-	verori=$(PGPASSWORD=$clave psql -h $ip -p $puerto -U $usuario -d $db -c 'show server_version;' | grep -v '(1 row)' | grep -v 'server_version' | sed 1d | sed 2d | cut -c 1-6)
-	echo "version: $verori"
-	PGPASSWORD="$clave" pg_dump -Fc -h $ip -p $puerto -U $usuario -d $db > /app/$fecha/$db-$ip-$puerto.dump
-	echo "==================="
+	echo "$ip", "$puerto", "$db", "$usuario", "$clave"
+	ping -A -c 5 $ip > /dev/null
+	if [[ $? = 0 ]]; then
+		verori=$(PGPASSWORD=$clave psql -h $ip -p $puerto -U $usuario -d $db -c 'show server_version;' | grep -v '(1 row)' | grep -v 'server_version' | sed 1d | sed 2d | cut -c 1-6)
+		echo "version: $verori"
+		PGPASSWORD="$clave" pg_dump -Fc -h $ip -p $puerto -U $usuario -d $db > /app/$fecha/$db-$ip-$puerto.dump
+		echo "==================="
+	else
+		echo "ERROR: $ip no esta disponible."
+	fi
 done < ./lista.txt
 
 echo "duracion $SECONDS segundos"

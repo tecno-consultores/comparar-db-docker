@@ -71,6 +71,21 @@ if [[ -z "$PASS2" ]]; then
 fi
 
 clear
+ping -A -c 5 $IP1 > /dev/null
+if [[ $? = 0 ]]; then
+	echo "$IP1 esta disponible."
+else
+	echo "ERROR: $IP1 no esta disponible."
+	exit 1
+fi
+
+ping -A -c 5 $IP2 > /dev/null
+if [[ $? = 0 ]]; then
+	echo "$IP2 esta disponible."
+else
+	echo "ERROR: $IP2 no esta disponible."
+	exit 1
+fi
 
 contarori=$(PGPASSWORD=$PASS1 psql -h $IP1 -p $PORT1 -U $USER1 -d $DBNAME -c "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = 'public' AND table_type = 'BASE TABLE'" | grep -v '(1 row)' | sed 1d | sed 1d | sed 2d)
 contardes=$(PGPASSWORD=$PASS2 psql -h $IP2 -p $PORT2 -U $USER2 -d $DBNAME -c "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = 'public' AND table_type = 'BASE TABLE'" | grep -v '(1 row)' | sed 1d | sed 1d | sed 2d)
