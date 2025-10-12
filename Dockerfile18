@@ -13,6 +13,6 @@ COPY backupdb /usr/bin/backupdb
 RUN chmod 777 /usr/bin/comparardb
 RUN chmod 777 /usr/bin/copiardb
 RUN chmod 777 /usr/bin/backupdb
-RUN apt update -qq && apt -y install --no-install-recommends --no-install-suggests postgresql-client-17 && apt clean && apt -y autoremove && rm -rf /var/lib/{apt,dpkg,cache,log}
+RUN apt update -qq && apt -y install --no-install-recommends --no-install-suggests postgresql-client && apt clean && apt -y autoremove && rm -rf /var/lib/{apt,dpkg,cache,log}
 EXPOSE 80
 CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
