@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Made by Sinfallas <sinfallas@yahoo.com>
+# Licence: GPL-2
+
+if [[ "$EUID" = "0" ]]; then
+	echo -e "\e[00;31mERROR: NO debe ser root.\e[00m"
+	exit 1
+fi
+
+clear
+docker buildx create --name container-builder --driver docker-container --bootstrap --use
+docker buildx build --platform linux/arm64,linux/amd64 --push -t sinfallas/comparar-db-docker:14 --builder=container-builder -f Dockerfile14 .
+docker buildx build --platform linux/arm64,linux/amd64 --push -t sinfallas/comparar-db-docker:15 --builder=container-builder -f Dockerfile15 .
+docker buildx build --platform linux/arm64,linux/amd64 --push -t sinfallas/comparar-db-docker:16 --builder=container-builder -f Dockerfile16 .
+docker buildx build --platform linux/arm64,linux/amd64 --push -t sinfallas/comparar-db-docker:17 --builder=container-builder -f Dockerfile17 .
+docker buildx build --platform linux/arm64,linux/amd64 --push -t sinfallas/comparar-db-docker:18 --builder=container-builder -f Dockerfile18 .
+docker buildx build --platform linux/arm64,linux/amd64 --push -t sinfallas/comparar-db-docker:latest --builder=container-builder -f Dockerfile18 .
+docker buildx rm container-builder
+docker system prune -af
+
+echo "finalizado..."
+exit 0
