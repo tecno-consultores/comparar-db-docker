@@ -1,12 +1,11 @@
-FROM ubuntu:24.04
-LABEL maintainer="sinfallas@gmail.com"
-LABEL build_date="2024-12-07"
+FROM ubuntu:26.04
+LABEL org.opencontainers.image.authors="sinfallas@gmail.com"
+
 WORKDIR /app
 RUN apt update -qq && apt-get -y dist-upgrade && apt -y install --no-install-recommends --no-install-suggests iputils-ping nginx libnginx-mod-stream swaks ca-certificates nano wget curl && apt clean && apt -y autoremove
 RUN install -d /usr/share/postgresql-common/pgdg
 RUN curl -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc --fail https://www.postgresql.org/media/keys/ACCC4CF8.asc
 RUN echo "deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] https://apt.postgresql.org/pub/repos/apt noble-pgdg main" > /etc/apt/sources.list.d/pgdg.list
-COPY COPYING ./
 COPY comparardb /usr/bin/comparardb
 COPY copiardb /usr/bin/copiardb
 COPY backupdb /usr/bin/backupdb
@@ -16,3 +15,5 @@ RUN chmod 777 /usr/bin/backupdb
 RUN apt update -qq && apt -y install --no-install-recommends --no-install-suggests postgresql-client-16 && apt clean && apt -y autoremove && rm -rf /var/lib/{apt,dpkg,cache,log}
 EXPOSE 80
 CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
+ARG BUILD_DATE
+LABEL org.opencontainers.image.created=$BUILD_DATE
