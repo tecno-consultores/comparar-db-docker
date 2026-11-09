@@ -39,3 +39,6 @@ docker run -it --rm --name backupdb --pull always --volume ./:/app sinfallas/com
 
 Get this image on:
 * https://hub.docker.com/repository/docker/sinfallas/comparar-db-docker
+
+
+Copyright (C) 2026 Jesus Palencia <sinfallas@gmail.com> (Creado en Tecno Consultores)
